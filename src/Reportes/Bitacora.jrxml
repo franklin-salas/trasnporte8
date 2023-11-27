@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b683430-f5c2-45a6-9b5b-05810d0f6dce">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     bitacora."id" AS bitacora_id,
+     bitacora."carnet" AS bitacora_carnet,
+     bitacora."fecha" AS bitacora_fecha,
+     bitacora."descripcion" AS bitacora_descripcion
+FROM
+     "dbo"."bitacora" bitacora ]]>
+	</queryString>
+	<field name="bitacora_id" class="java.lang.Integer"/>
+	<field name="bitacora_carnet" class="java.lang.Integer"/>
+	<field name="bitacora_fecha" class="java.sql.Timestamp"/>
+	<field name="bitacora_descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="98" splitType="Stretch">
+			<staticText>
+				<reportElement x="175" y="15" width="214" height="48" uuid="83fce9c6-60b8-48e5-b168-7cd628949109"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bitacora]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="0" y="9" width="142" height="20" uuid="aa7cfa20-7d2f-4fc1-90a6-851ce26edda2"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="1" width="555" height="44" backcolor="#CCFFCC" uuid="1f2984b3-76b7-428d-835b-0e463093f266"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="19" y="13" width="100" height="20" uuid="26661584-e7d0-4358-908e-cf7b2e381c84"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="14" width="100" height="20" uuid="09cfdafc-9f1e-488b-a748-632acfd09496"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Carnet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="13" width="100" height="20" uuid="4ca933f2-7762-41eb-af7b-db92556e9e98"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="14" width="100" height="20" uuid="820e98ff-80bf-4bcc-ad94-400e84e131c8"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="5" width="100" height="20" uuid="a98656d0-20cf-4265-92e3-be67cbb9335d"/>
+				<textFieldExpression><![CDATA[$F{bitacora_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="5" width="100" height="20" uuid="72fff61b-7eaf-4169-bb46-2bef12c5415d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{bitacora_carnet}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="226" y="5" width="151" height="20" uuid="dcd4175d-457d-4833-aa9d-323a07629b99"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{bitacora_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="5" width="166" height="20" uuid="686010fd-2d81-4a50-b957-f45335fe88a2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{bitacora_descripcion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" uuid="9f2f5d82-3a1f-4928-81e4-bf1f1317b28a"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

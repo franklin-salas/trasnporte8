@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b5fa0d3-79ba-496d-8a7a-e1e92f675cf1">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="17"/>
+	<parameter name="parameter1" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     c."ci" AS Carnet,
+     c."nombre" AS Nombre,
+     b."nro" AS NroBoleto,
+     b."asiento" AS Asiento,
+     b."precio" AS Precio,
+     per."nroInt" AS NroInt,
+     o."nombre" AS origen,
+     d."nombre" AS destino,
+     h."hora" AS hora,
+     p."fecha" AS fecha
+FROM
+     "itinerario" i INNER JOIN "ruta" r ON i."codRuta" = r."cod"
+     INNER JOIN "lugar" o ON r."codOrigen" = o."cod"
+     INNER JOIN "lugar" d ON r."codDestino" = d."cod"
+     INNER JOIN "planilla" p ON i."nro" = p."nroItinerario"
+     INNER JOIN "persona" per ON p."codChofer" = per."codigo"
+     INNER JOIN "hojaDeSalida" h ON p."cod" = h."codPlanilla"
+     INNER JOIN "boleto" b ON p."cod" = b."codPlanilla"
+     INNER JOIN "cliente" c ON b."idCliente" = c."id"
+WHERE
+     b.nro = $P{parameter1}]]>
+	</queryString>
+	<field name="Carnet" class="java.lang.Integer"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="NroBoleto" class="java.lang.Integer"/>
+	<field name="Asiento" class="java.lang.Integer"/>
+	<field name="Precio" class="java.lang.Double"/>
+	<field name="NroInt" class="java.lang.Integer"/>
+	<field name="origen" class="java.lang.String"/>
+	<field name="destino" class="java.lang.String"/>
+	<field name="hora" class="java.sql.Time"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="421" splitType="Stretch">
+			<elementGroup/>
+			<staticText>
+				<reportElement x="142" y="11" width="305" height="31" forecolor="#339900" uuid="9685cb8a-23e1-4751-95a5-dca1fb4d95d8"/>
+				<textElement>
+					<font size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[SINDICATO MIXTO DE TRANSPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="42" width="257" height="41" forecolor="#339900" uuid="26f7dfee-3be6-40ed-a994-b7ae3f94d779"/>
+				<textElement>
+					<font fontName="Serif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[" 8 DE  NOVIEMBRE"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="9" y="7" width="151" height="99" uuid="e50e2bab-9e1c-4377-8704-09e11db20af8"/>
+				<imageExpression><![CDATA["C:\\Users\\FRANKLIN SALAS\\Desktop\\seriespormega\\Proyecto_Transporte\\src\\Imagenes\\auto3.png"]]></imageExpression>
+			</image>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="0" y="0" width="562" height="421" forecolor="#00CC00" uuid="957a8b15-76c1-46dd-bfaa-e79bfd7362be"/>
+				<graphicElement>
+					<pen lineWidth="5.0" lineStyle="Double" lineColor="#339900"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="177" width="230" height="20" forecolor="#339900" uuid="5b4c8143-c5a8-42f3-a5d6-d1892879c61b"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Nombre :................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="147" width="181" height="20" forecolor="#339900" uuid="16cc04fd-147a-492b-8cbb-1fec7a57f161"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Carnet :.......................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="147" width="100" height="20" forecolor="#339900" uuid="db272e56-1b73-48de-9369-1bad125d4981"/>
+				<text><![CDATA[Nro Int :...............]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="222" width="30" height="20" forecolor="#339900" uuid="e1836728-3a8d-4ee7-8765-624c8a4cb702"/>
+				<textElement>
+					<font isBold="true" isItalic="false" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[RUTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="259" width="181" height="20" forecolor="#339900" uuid="df9be862-058b-4319-8156-72abf872452c"/>
+				<text><![CDATA[Origen :.............................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="287" width="181" height="20" forecolor="#339900" uuid="b4f0ee36-0c3e-46b3-992e-b4f0d811e5fe"/>
+				<text><![CDATA[Destino :.............................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="222" width="104" height="20" forecolor="#339900" uuid="bd10a22d-491f-434d-9697-ce83134a771f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[HORA DE SALIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="223" width="100" height="20" forecolor="#339900" uuid="2cd0c54a-34f7-47e7-8afd-0945f0a55207"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="379" width="61" height="20" forecolor="#339900" uuid="9987962a-cddc-4625-95fa-6ca201b2a613"/>
+				<text><![CDATA[PASAJE Bs. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="316" width="100" height="20" forecolor="#339900" uuid="e245da0f-48c0-428c-8c93-9b290cebbd15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ASIENTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="66" y="143" width="139" height="20" uuid="100f3c92-941b-4153-99bc-98b65b158499"/>
+				<textFieldExpression><![CDATA[$F{Carnet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="173" width="199" height="20" uuid="3b3eacd0-d187-4871-a60c-c1f37693f7f3"/>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="349" width="100" height="30" uuid="66babe1f-d102-4226-851d-663d4bb067fa"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Asiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="144" width="100" height="20" uuid="e69182bd-790b-476e-b1e7-3521fafd7de0"/>
+				<textFieldExpression><![CDATA[$F{NroInt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="255" width="150" height="20" uuid="3e812527-b0b5-456a-970c-b0ab3feae407"/>
+				<textFieldExpression><![CDATA[$F{origen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="283" width="147" height="20" uuid="4359c6f3-038c-440a-976e-168852c2077f"/>
+				<textFieldExpression><![CDATA[$F{destino}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="275" y="251" width="100" height="20" uuid="d00c5d9f-53ff-4248-ab4c-4bdffe58bf1f"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="430" y="255" width="100" height="20" uuid="12918f39-79bc-44b7-a9fc-90872b7d8aa3"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="379" width="100" height="20" uuid="434f503e-6943-4b6e-9c19-9b996eea5910"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Precio}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="15" y="218" width="214" height="98" backcolor="#00CC00" uuid="d2f487f1-b2c4-48b8-add7-2e9ee2752921"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#339900"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="254" y="215" width="137" height="72" uuid="be716a3f-b13e-4d19-8552-70a8bf8f5487"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#339900"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="408" y="217" width="136" height="70" uuid="465ecdcf-28a3-4d6a-bd2b-fe893a948770"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#339900"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="255" y="308" width="136" height="70" uuid="2120a1da-495c-40df-ab36-7acdecd1794b"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#339900"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="87" y="373" width="114" height="28" uuid="bbca5868-112a-4563-bc01-052d40c74d1e"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Solid" lineColor="#339900"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement mode="Transparent" x="16" y="243" width="213" height="1" uuid="e58eba56-3310-4fe1-85fc-c261b6276a69"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineColor="#339900"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="254" y="244" width="137" height="1" uuid="d99b5df9-6355-43a1-83c9-984dcca79886"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineColor="#339900"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="410" y="245" width="132" height="1" uuid="b3d88a1a-8758-4907-b2fb-196620a532fa"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineColor="#339900"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="254" y="339" width="137" height="1" uuid="3c1f8092-dbdc-473a-b6ee-27168552ecb5"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineColor="#339900"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="24" y="106" width="457" height="20" forecolor="#339900" uuid="754fe34b-606e-4f51-82c5-f86b1f5d3f2b"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Telf. Of. Central 79877720 - Of. Santa Cruz 798777730 - Of. San Julian 79877731]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

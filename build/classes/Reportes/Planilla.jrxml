@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6b3c3bc3-bd54-484d-860e-7717fff5c5f8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="10"/>
+	<parameter name="parameter1" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[ select pl.cod as Nro,b.asiento as NroAsiento,cl.ci as Carnet,cl.nombre as Nombre,b.precio as Pago,pl.costoPlanilla as DerechoSalida,pl.totalPasaje as Total,p.nroInt as NroInt,p.nombre as NombreC,pl.fecha as Fecha,
+ pl.hora as Hora, ld.nombre as Destino
+ from planilla as pl,persona as p,itinerario as i,boleto as b,cliente as cl,ruta as r,lugar as ld
+ where  p.codigo=pl.codChofer and pl.nroItinerario =i.nro and i.codRuta=r.cod and
+  r.codDestino=ld.cod and pl.cod=b.codPlanilla and b.idCliente=cl.id and pl.cod=$P{parameter1}
+  order by NroAsiento asc
+ ]]>
+	</queryString>
+	<field name="Nro" class="java.lang.Integer"/>
+	<field name="NroAsiento" class="java.lang.Integer"/>
+	<field name="Carnet" class="java.lang.Integer"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Pago" class="java.lang.Double"/>
+	<field name="DerechoSalida" class="java.lang.Double"/>
+	<field name="Total" class="java.lang.Double"/>
+	<field name="NroInt" class="java.lang.Integer"/>
+	<field name="NombreC" class="java.lang.String"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Hora" class="java.sql.Time"/>
+	<field name="Destino" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="115" splitType="Stretch">
+			<staticText>
+				<reportElement x="184" y="21" width="240" height="20" forecolor="#339900" uuid="c49b3d51-0abd-4bb5-add2-afb04e008c65"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SINDICATO MIXTO DE TRANSPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="52" width="156" height="20" forecolor="#339900" uuid="fa8cd5ad-29c5-493c-979b-43d0636b8be1"/>
+				<textElement>
+					<font fontName="Serif" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[" 8 DE  NOVIEMBRE"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="5" y="4" width="143" height="92" uuid="9213f717-c79c-4f3b-8305-73b76120e9fc"/>
+				<imageExpression><![CDATA["C:\\Users\\FRANKLIN SALAS\\Desktop\\seriespormega\\Proyecto_Transporte\\src\\Imagenes\\auto3.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="365" y="80" width="186" height="28" forecolor="#339900" uuid="24eae9e5-1c60-4f75-ab60-fdc31ed39742"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PLANILLA DE PASAJEROS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="54" width="38" height="20" uuid="4854b6c5-5e07-4934-9f3c-1a184b35bbdf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nro 00]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="473" y="54" width="77" height="20" uuid="eb6103aa-b62f-4fc2-ba59-53ace2c05356"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="91" y="4" width="379" height="41" forecolor="#339900" uuid="2fe1b65c-da0c-4ff8-b348-5da25777e131"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Afiliada a la Federacion "16 de Noviembre " - Personeria Juridica 216843
+Telf. Of. Central 79877720 - Of. Santa Cruz 798777730 - Of. San Julian 79877731
+ Santa Cruz - Bolivia]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="40" y="10" width="469" height="39" backcolor="#CCFFCC" uuid="e369fe17-ee0b-4996-a348-85eac421dbc9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="60" y="21" width="100" height="20" uuid="03e49499-4dd7-4601-93ad-651ff176306b"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NroAsiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="21" width="100" height="20" uuid="ff855279-1cd5-4d20-afaf-569d422241c1"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Carnet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="19" width="149" height="20" uuid="89dec1c4-2187-4572-9432-45a4cc5f5c6e"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="19" width="57" height="20" uuid="7e176681-f43a-40ad-a6ed-33112f093369"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="4" width="100" height="20" uuid="331d08c6-95fa-4311-a399-e20162eaa581"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NroAsiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="4" width="100" height="20" uuid="adebde0c-9a1f-40ab-9112-105262d0c222"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Carnet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="4" width="149" height="20" uuid="5615b0b9-8aab-41a1-a593-65418b61773d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="4" width="65" height="20" uuid="3f1530a0-166a-4423-b6f5-c14bbe52a192"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Pago}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="40" y="27" width="469" height="1" uuid="cb29b730-d3a3-4221-bc60-4b25dd1cc596"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="98" splitType="Stretch">
+			<staticText>
+				<reportElement x="42" y="18" width="170" height="20" forecolor="#339900" uuid="4c051f4a-301a-4e53-a2ad-0a5e7766f493"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Suma Total Bs  ..........................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="48" width="243" height="20" forecolor="#339900" uuid="5c7097f9-77eb-4b00-89ec-ceb39c3c5d39"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conductor ............................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="48" width="137" height="20" forecolor="#339900" uuid="32c6d8e2-5ca0-4e85-bf7f-fd46909c2a94"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha ................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="48" width="111" height="20" forecolor="#339900" uuid="54b18595-2974-47b1-a3bc-d6853dcd3c22"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora ..........................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="18" width="138" height="20" forecolor="#339900" uuid="25ef235d-314b-4913-a1ba-4f8b65babb00"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NroInt ..............................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="74" width="243" height="20" forecolor="#339900" uuid="bed748f9-05cd-4522-9669-852e00b8c466"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destino ............................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="18" width="173" height="20" forecolor="#339900" uuid="e9a00fcb-1e1f-4598-b1c6-99d604e969df"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Derecho de Salida ......................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="315" y="13" width="100" height="20" uuid="25093e7d-00a9-40c1-b2ce-8c8358c6c3b5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DerechoSalida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="12" width="100" height="20" uuid="35acff6e-1b94-4249-88b8-69f420980f6a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="12" width="100" height="20" uuid="48725b32-6c17-459a-83d5-131c7f624897"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NroInt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="43" width="157" height="20" uuid="a61122b0-8e73-4abd-bd25-7e9651fccc6a"/>
+				<textFieldExpression><![CDATA[$F{NombreC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="322" y="42" width="100" height="20" uuid="8eacdefe-0c76-4c48-bc50-85f6748b3c3a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="440" y="43" width="100" height="20" uuid="bec3b941-ff47-43f9-856e-91727a0f07e4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="69" width="153" height="20" uuid="c4165cd7-3850-4a99-be59-e39ff74773cd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Destino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

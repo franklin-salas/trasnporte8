@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bf079e4-fd16-46f1-8574-bdb335d676d2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="53"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select c.ci as Carnet,c.nombre as Nombre , n.id as Nro, n.fecha as Fecha,n.hora as Hora,n.costo as Total
+ ,e.cod as Codigo ,e.descripcion as Descripcion ,e.cantidad as Cantidad ,e.precio as Precio ,(e.cantidad*e.precio) as ProdTotal
+ from cliente as c , nota as n, equipaje as e  where e.idnota = n.id and n.idCliente = c.id and n.id =$P{parameter1}]]>
+	</queryString>
+	<field name="Carnet" class="java.lang.Integer"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Nro" class="java.lang.Integer"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Hora" class="java.sql.Time"/>
+	<field name="Total" class="java.lang.Double"/>
+	<field name="Codigo" class="java.lang.Integer"/>
+	<field name="Descripcion" class="java.lang.String"/>
+	<field name="Cantidad" class="java.lang.Integer"/>
+	<field name="Precio" class="java.lang.Double"/>
+	<field name="ProdTotal" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="176" y="10" width="196" height="20" uuid="1ff36496-0bca-4c20-85c2-9c51a0d9ba21"/>
+				<text><![CDATA[SINDICATO  MIXTO  DE TRANSPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="30" width="115" height="20" uuid="2c8e0e7e-aa9f-47f8-b0cd-de3b5a586908"/>
+				<text><![CDATA[" 8  DE NOVIEMBRE "]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="158" height="101" uuid="4489b00a-acad-45a9-9d26-b129f29b5235"/>
+				<imageExpression><![CDATA["C:\\Users\\FRANKLIN SALAS\\Desktop\\seriespormega\\Proyecto_Transporte\\src\\Imagenes\\auto3.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="428" y="50" width="100" height="20" uuid="f0a0170b-3c60-421b-a19b-9cd9715a09cd"/>
+				<text><![CDATA[Nro 00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="81" width="75" height="20" uuid="17e6891d-2e53-4642-b9b4-f21e47b77648"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="461" y="50" width="67" height="20" uuid="68233a60-7cfb-4fa3-88e0-e5715cd006a7"/>
+				<textFieldExpression><![CDATA[$F{Nro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="148" splitType="Stretch">
+			<staticText>
+				<reportElement x="82" y="3" width="419" height="56" uuid="da35a3c1-3dab-4c00-b178-a2d836724243"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Afiliada a la Federacion "16 de Noviembre " - Personeria Juridica 216843
+Telf. Of. Central 79877720 - Of. Santa Cruz 798777730 - Of. San Julian 79877731
+ Santa Cruz - Bolivia]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="34" y="62" width="194" height="79" backcolor="#99FF99" uuid="e509401e-9a6b-4766-bc9d-bda3a2de5e9b"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="268" y="63" width="160" height="79" backcolor="#99FF99" uuid="0f3d41b0-d7f7-4c1e-98cc-083e4c952ef5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="48" y="75" width="61" height="20" uuid="2641544f-2b98-45b7-b7b7-966a3f9aeea3"/>
+				<text><![CDATA[Carnet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="113" width="100" height="20" uuid="761a7af5-d6ac-4353-a223-90361ee09a2c"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="68" width="100" height="20" uuid="0a0d6bbb-6bb6-4e50-bdf4-dee1a6919afd"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="105" width="67" height="20" uuid="f0025129-5691-4650-adef-c84b69abd6ee"/>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="74" width="100" height="20" uuid="675da2ef-0404-441d-b9dc-0dea963f42d0"/>
+				<textFieldExpression><![CDATA[$F{Carnet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="113" width="135" height="20" uuid="b84e553b-28aa-4bc3-a73e-3d0a6ff5c4c0"/>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="289" y="88" width="111" height="20" uuid="8b59e267-7fce-4a37-bba1-0b2a97eab483"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="295" y="123" width="100" height="20" uuid="ec002b96-0014-4624-a846-111030990819"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="19" y="2" width="499" height="41" backcolor="#CCFFCC" uuid="c803d1b7-43ab-4a6e-92fa-3b63e6135cde"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="34" y="12" width="75" height="20" uuid="fb11a292-3473-49ce-8684-30acdfca9bdb"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="14" width="100" height="20" uuid="4606eb4b-ad6b-4c4d-a77c-f6502a7c4cad"/>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="14" width="55" height="20" uuid="5b235e56-78ad-499e-be53-0f267574ade9"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="14" width="52" height="20" uuid="81bfc6d1-db24-4bc5-8270-f38859bfe178"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="12" width="66" height="20" uuid="e7db8c24-96c8-4838-b15f-0e61722800a2"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="38" splitType="Stretch">
+			<line>
+				<reportElement x="19" y="28" width="497" height="1" uuid="167876b8-ec8b-4516-a928-a90629676f37"/>
+			</line>
+			<textField>
+				<reportElement x="34" y="6" width="75" height="20" uuid="4e6adb47-ea57-45f0-a978-c8d13e1b43e9"/>
+				<textFieldExpression><![CDATA[$F{Codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="7" width="165" height="20" uuid="b33ec3a4-d96d-4831-a3df-54f70459ae19"/>
+				<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="7" width="55" height="20" uuid="136242c1-96e8-4dc4-b6bb-0b52707d4c79"/>
+				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="6" width="45" height="20" uuid="b8380c85-7bcd-4382-ae93-fbb40a20fed2"/>
+				<textFieldExpression><![CDATA[$F{Precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="5" width="100" height="20" uuid="1e4a1182-750d-415a-ac51-acf7c8507b94"/>
+				<textFieldExpression><![CDATA[$F{ProdTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="416" y="15" width="100" height="20" uuid="74a9f27c-a5f2-4303-ac5a-3ddd66754594"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="448" y="15" width="80" height="20" uuid="7aa6fe10-d4e8-4f69-bf1d-3818ac46755a"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

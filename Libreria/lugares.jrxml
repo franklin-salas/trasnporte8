@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f3071ba0-446e-421b-8ba1-af7b71cc80f8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     lugar."cod" AS lugar_cod,
+     lugar."nombre" AS lugar_nombre
+FROM
+     "dbo"."lugar" lugar]]>
+	</queryString>
+	<field name="lugar_cod" class="java.lang.Integer"/>
+	<field name="lugar_nombre" class="java.lang.String"/>
+	<group name="lugar_cod">
+		<groupExpression><![CDATA[$F{lugar_cod}]]></groupExpression>
+	</group>
+	<group name="lugar_nombre">
+		<groupExpression><![CDATA[$F{lugar_nombre}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="171" y="9" width="229" height="35" uuid="393492d2-b4a9-4165-a117-d43315a0b240"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[LISTA DE LUGARES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="148" y="3" width="100" height="20" uuid="47795262-bc96-4d26-8195-293bc38b1051"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="3" width="117" height="20" uuid="65f546f9-d303-4542-9623-857c09d02839"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Lugar]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="148" y="3" width="100" height="20" uuid="83fae390-f89d-4046-9260-73544c01085d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lugar_cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="3" width="117" height="20" uuid="950f731a-ea82-4d18-b9c2-a488995c1fea"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lugar_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="27" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="27" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="19" splitType="Stretch"/>
+	</summary>
+</jasperReport>
